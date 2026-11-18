@@ -1,13 +1,14 @@
 # CEMCOP Entregas — Frontend Web
 
-Aplicación web SPA desarrollada con **Angular 22 (`^22.2.6`) + PrimeNG 22 (`^22.1.5`) + `@primeuix/themes` (`^3.1.1`)** para el **Sistema de Gestión y Entrega de Obsequios de CEMCOP**.
+Aplicación web SPA desarrollada con **Angular 22 (`^22.2.6`) + PrimeNG 21 (`21.1.10`) + `@primeuix/themes` (`2.0.3`, 100% MIT Open Source / versión gratuita sin paquetes ni banners de licencia comercial)** para el **Sistema de Gestión y Entrega de Obsequios de CEMCOP**.
 
 ## Características principales
 
 - **Arquitectura Angular Standalone + Signals:** rutas lazy-loaded protegidas por guards de autenticación, rol y cambio obligatorio de contraseña (`authGuard`, `initialPasswordGuard`, `roleGuard`).
+- **Componentes 100% gratuitos (MIT):** usa `primeng@21.1.10`, `@primeuix/themes@2.0.3` y `primeicons@^7.0.0`, sin `@primeui/license-manager` ni componentes comerciales/Pro.
 - **Diseño Full Responsive y personalizable en tiempo de ejecución:** cajón personalizador de paleta/tema (`theme-customizer-drawer.component.ts` + `theme.service.ts`).
 - **Captura operativa en punto de entrega:** lector/parser de cédula PDF417 (`pdf417-parser.ts`) y lienzo de firma digital HiDPI (`signature-pad.component.ts`).
-- **Integración transparente en desarrollo:** `proxy.conf.json` redirige las llamadas `/api` hacia `http://localhost:3000`.
+- **Integración transparente en desarrollo:** `proxy.conf.json` redirige las llamadas `/api` y `/api-docs` hacia `http://localhost:3000`.
 
 ---
 
@@ -35,6 +36,11 @@ El proyecto ya incluye `proxy.conf.json` configurado en `angular.json` para el c
 ```json
 {
   "/api": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/api-docs": {
     "target": "http://localhost:3000",
     "secure": false,
     "changeOrigin": true
